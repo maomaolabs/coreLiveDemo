@@ -40,7 +40,7 @@ export function HeroSection() {
 
         <motion.div variants={item} className="flex flex-wrap justify-center items-center gap-4 sm:gap-5 text-sm font-semibold w-full px-4 sm:px-6 mb-24">
           <a
-            href="https://github.com/maomaolabs"
+            href="https://github.com/maomaolabs/core"
             target="_blank"
             rel="noreferrer"
             className="flex w-full sm:flex-1 sm:min-w-[160px] sm:max-w-[240px] items-center justify-center px-8 py-4 rounded-full bg-slate-900 dark:bg-white text-white dark:text-slate-900 hover:scale-[1.03] transition-all duration-300 ease-out shadow-[0_8px_30px_rgb(0,0,0,0.12)] dark:shadow-[0_8px_30px_rgb(255,255,255,0.12)] hover:shadow-[0_8px_30px_rgb(0,0,0,0.2)] dark:hover:shadow-[0_8px_30px_rgb(255,255,255,0.2)]"
