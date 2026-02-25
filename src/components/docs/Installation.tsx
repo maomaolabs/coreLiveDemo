@@ -1,19 +1,14 @@
 import React from 'react';
 import { Zap, Maximize2, Layout, MonitorSmartphone, MousePointer2 } from 'lucide-react';
-
 export const Installation = () => {
   return (
     <div className="space-y-12 animate-in fade-in slide-in-from-bottom-2 duration-300">
-
-      {/* Header */}
       <div className="border-b border-gray-200 dark:border-gray-800 pb-8">
         <h1 className="text-2xl font-extrabold text-gray-900 dark:text-white mb-3 tracking-tight leading-tight">@maomaolabs/core</h1>
         <p className="text-base text-gray-600 dark:text-gray-300 font-medium leading-relaxed">
           A standalone lightweight React library that brings a complete, performant, and responsive desktop window management experience to the web.
         </p>
       </div>
-
-      {/* Key Features */}
       <section className="space-y-4">
         <h2 className="text-2xl font-bold text-gray-900 dark:text-white flex items-center gap-2">
           <Zap className="text-yellow-500 shrink-0" size={22} />
@@ -48,8 +43,6 @@ export const Installation = () => {
           />
         </div>
       </section>
-
-      {/* Installation */}
       <section className="space-y-6">
         <div className="flex items-center gap-3 border-b border-gray-200 dark:border-gray-800 pb-2">
           <div className="bg-blue-100 dark:bg-blue-900/50 p-2 rounded-lg">
@@ -57,22 +50,18 @@ export const Installation = () => {
           </div>
           <h2 className="text-2xl font-bold text-gray-900 dark:text-white">Installation</h2>
         </div>
-
         <p className="text-gray-700 dark:text-gray-300">
           Install via your preferred package manager (requires <code className="bg-gray-100 dark:bg-gray-800 px-1.5 py-0.5 rounded text-sm text-pink-500">react</code> and <code className="bg-gray-100 dark:bg-gray-800 px-1.5 py-0.5 rounded text-sm text-pink-500">react-dom</code> &gt;= 18.0.0):
         </p>
-
         <div className="grid gap-3">
           <CodeBlock command="npm install @maomaolabs/core" />
           <CodeBlock command="yarn add @maomaolabs/core" />
           <CodeBlock command="pnpm add @maomaolabs/core" />
         </div>
       </section>
-
     </div>
   );
 };
-
 function FeatureItem({ icon, title, desc, wide }: { icon: React.ReactNode, title: string, desc: string, wide?: boolean }) {
   return (
     <div className={`bg-gray-50 dark:bg-gray-800/50 border border-gray-200 dark:border-gray-700 rounded-xl p-4 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors ${wide ? 'w-full' : 'flex-[1_1_180px]'}`}>
@@ -86,7 +75,6 @@ function FeatureItem({ icon, title, desc, wide }: { icon: React.ReactNode, title
     </div>
   );
 }
-
 function CodeBlock({ command }: { command: string }) {
   return (
     <div className="bg-[#0d1117] border border-[#30363d] rounded-lg p-4 font-mono text-sm text-gray-300 flex items-center group relative overflow-hidden min-w-0">

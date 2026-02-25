@@ -1,36 +1,55 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# MaoMao OS Live Demo
 
-## Getting Started
+This is the official demonstration environment for **[@maomaolabs/core](https://www.npmjs.com/package/@maomaolabs/core)**, showcasing the full capabilities of the library in a simulated operating system environment. 
 
-First, run the development server:
+This repository contains the Next.js application that powers the live demo, featuring complex layered architectures, multiple custom-built "apps" (like PixelMao and SystemMonitor), and fully customized implementations of the underlying core window management system.
+
+## 🚀 Quick Start
+
+To run this demonstration locally:
 
 ```bash
+# Clone the repository
+git clone https://github.com/maomaolabs/coreLiveDemo.git
+
+# Navigate into the directory
+cd coreLiveDemo
+
+# Install dependencies
+npm install
+
+# Start the development server
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) in your browser.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 🏗️ Project Structure
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+The project is structured around the `src/` directory, heavily modularizing the different applications that compose the simulated "OS".
 
-## Learn More
+*   **`src/app/`** - The Next.js 14 App Router entry points (`page.tsx`, `layout.tsx`) and global CSS.
+*   **`src/components/`** - The core of the simulated OS.
+    *   **`docs/`** - The MaoMao OS internal documentation app components.
+    *   **`monitor/`** - The `SystemMonitor` application, built to track window states and system performance live.
+    *   **`pixelmao/`** - A complete pixel-art drawing application demonstrating complex nested state within a window.
+    *   **`showcase/`** - The marketing overview page components (`HeroSection`, `FeaturesOverview`, `MediaShowcase`).
+    *   **`ui/`** - Reusable UI primitives used across the OS (like `Modal`).
+*   **`src/hooks/`** - Custom React hooks for global state management (e.g., `useDemoSignal`).
 
-To learn more about Next.js, take a look at the following resources:
+## 💡 Key Implementations
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+This demo highlights several advanced patterns achievable with `@maomaolabs/core`:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+1.  **Fully Customized Toolbar:** Demonstrates how to build a highly interactive taskbar with folder grouping, tooltips, and live window synchronization.
+2.  **State Inspection:** The `SystemMonitor` uses the `useWindows` hook to tap into the engine's internal state and visualize z-indexes and coordinates in real-time.
+3.  **Performant Renders:** The "Stress Test" logic inside the Playground proves the context-splitting architecture by spawning dozens of windows without dropping frames.
+4.  **Fluid UI Synchronization:** Showcases how native-feeling animations (like minimizing to an icon) integrate flawlessly with standard CSS/Framer Motion and the core library.
 
-## Deploy on Vercel
+## 🌐 Deployment
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+This project is optimized for deployment on Vercel or Cloudflare Pages. Since it relies heavily on client-side rendering (`"use client"`), it functions effectively as a Single Page Application within the Next.js framework. It requires zero configuration on standard platforms. Note that you may need to adjust organization visibility settings on platforms like Vercel if you deploy from a private GitHub organization tier.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## 📄 License
+
+MIT © [MaoMao Labs](https://github.com/maomaolabs)

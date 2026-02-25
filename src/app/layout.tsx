@@ -8,7 +8,7 @@ import favicon from "./favicon.png";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
-  title: "MaoMao OS | @maomaolabs/core",
+  title: "@maomaolabs/core | Live Demo",
   description: "A standalone lightweight React library that brings a complete, performant, and responsive desktop window management experience to the web.",
   icons: {
     icon: favicon.src,

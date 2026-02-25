@@ -1,5 +1,4 @@
 import React, { useEffect, useRef } from 'react';
-
 interface ModalProps {
   isOpen: boolean;
   title: string;
@@ -10,7 +9,6 @@ interface ModalProps {
   cancelText?: string;
   variant?: 'default' | 'danger';
 }
-
 export const Modal: React.FC<ModalProps> = ({
   isOpen,
   title,
@@ -22,27 +20,22 @@ export const Modal: React.FC<ModalProps> = ({
   variant = 'default',
 }) => {
   const modalRef = useRef<HTMLDivElement>(null);
-
   useEffect(() => {
     const handleEscape = (e: KeyboardEvent) => {
       if (isOpen && e.key === 'Escape') {
         onClose();
       }
     };
-
     if (isOpen) {
       document.body.style.overflow = 'hidden';
       window.addEventListener('keydown', handleEscape);
     }
-
     return () => {
       document.body.style.overflow = 'unset';
       window.removeEventListener('keydown', handleEscape);
     };
   }, [isOpen, onClose]);
-
   if (!isOpen) return null;
-
   return (
     <div className="fixed inset-0 z-[9999] flex items-center justify-center bg-black/50 backdrop-blur-sm p-4">
       <div
@@ -52,7 +45,6 @@ export const Modal: React.FC<ModalProps> = ({
         aria-modal="true"
         onClick={(e) => e.stopPropagation()}
       >
-        {/* Header */}
         <div className="px-6 py-4 border-b border-gray-200 dark:border-[#369672]/20 flex justify-between items-center bg-gray-50 dark:bg-[#05100B]">
           <h3 className="text-lg font-semibold text-gray-900 dark:text-[#E8F5EE]">
             {title}
@@ -67,13 +59,9 @@ export const Modal: React.FC<ModalProps> = ({
             </svg>
           </button>
         </div>
-
-        {/* Content */}
         <div className="px-6 py-4 text-gray-600 dark:text-[#8AA698]">
           {children}
         </div>
-
-        {/* Footer */}
         <div className="px-6 py-4 bg-gray-50 dark:bg-[#05100B] flex justify-end gap-3 border-t border-gray-200 dark:border-[#369672]/20">
           <button
             onClick={onClose}
@@ -92,7 +80,6 @@ export const Modal: React.FC<ModalProps> = ({
           </button>
         </div>
       </div>
-      {/* Backdrop click handler */}
       <div className="absolute inset-0 -z-10" onClick={onClose} aria-hidden="true" />
     </div>
   );

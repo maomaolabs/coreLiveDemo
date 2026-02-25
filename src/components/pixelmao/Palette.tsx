@@ -1,16 +1,13 @@
 import React from 'react';
-
 interface PaletteProps {
   selectedColor: string;
   onSelectColor: (color: string) => void;
 }
-
 const COLORS = [
   '#000000', '#1a1c2c', '#5d275d', '#b13e53', '#ef7d57', '#ffcd75', '#a7f070', '#38b764',
   '#257179', '#29366f', '#3b5dc9', '#41a6f6', '#73eff7', '#f4f4f4', '#94b0c2', '#566c86',
   '#333c57', '#ffffff', '#ff0044', '#00ff99', '#ffff00', '#00ccff', '#9900ff', '#ff6600'
 ];
-
 export const Palette = ({ selectedColor, onSelectColor }: PaletteProps) => {
   return (
     <div className="grid grid-cols-4 gap-2">
@@ -26,7 +23,6 @@ export const Palette = ({ selectedColor, onSelectColor }: PaletteProps) => {
           title={color}
         />
       ))}
-      {/* Custom Color Picker */}
       <div className="relative group w-8 h-8 rounded-full overflow-hidden border-2 border-transparent hover:scale-110 transition-transform cursor-pointer">
         <input
           type="color"

@@ -1,11 +1,9 @@
 import React from "react";
 import { useWindows, useWindowActions } from "@maomaolabs/core";
 import { XCircle, Activity, LayoutList, Code } from "lucide-react";
-
 export const SystemMonitor = () => {
   const windows = useWindows();
   const { closeWindow, focusWindow } = useWindowActions();
-
   const safeWindows = windows.map(win => ({
     id: win.id,
     title: win.title,
@@ -15,10 +13,8 @@ export const SystemMonitor = () => {
     zIndex: win.zIndex,
     isMaximized: win.isMaximized,
   })).sort((a, b) => b.zIndex - a.zIndex);
-
   return (
     <div className="w-full h-full flex flex-col bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100 font-sans">
-      {/* Header */}
       <div className="flex-none px-4 py-3 bg-white dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700 flex items-center justify-between shrink-0">
         <div>
           <h2 className="text-base font-semibold flex items-center gap-2">
@@ -33,9 +29,7 @@ export const SystemMonitor = () => {
           Processes: {windows.length}
         </div>
       </div>
-
       <div className="flex-1 flex flex-col min-h-0 p-3 gap-3 overflow-hidden">
-        {/* Process Table (Top) */}
         <div className="flex-[3] min-h-0 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg shadow-sm flex flex-col overflow-hidden">
           <div className="flex-none px-3 py-2 bg-gray-50 dark:bg-gray-800/50 border-b border-gray-200 dark:border-gray-700 flex items-center gap-2 font-medium text-xs">
             <LayoutList size={14} className="text-gray-400" />
@@ -98,8 +92,6 @@ export const SystemMonitor = () => {
             </table>
           </div>
         </div>
-
-        {/* Raw State View (Bottom) */}
         <div className="flex-[2] min-h-0 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg shadow-sm flex flex-col overflow-hidden">
           <div className="flex-none px-3 py-2 bg-gray-50 dark:bg-gray-800/50 border-b border-gray-200 dark:border-gray-700 flex items-center gap-2 font-medium text-xs">
             <Code size={14} className="text-gray-400" />

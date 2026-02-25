@@ -1,25 +1,18 @@
 import React from 'react';
 import { Package, Hash, GitBranch } from 'lucide-react';
-
 export const API = () => {
   return (
     <div className="space-y-12 animate-in fade-in slide-in-from-bottom-2 duration-300">
-
-      {/* Header */}
       <div className="border-b border-gray-200 dark:border-gray-800 pb-4">
         <h1 className="text-3xl font-extrabold text-gray-900 dark:text-white mb-2 tracking-tight">API Reference</h1>
         <p className="text-lg text-gray-600 dark:text-gray-300">Detailed reference for core components, hooks, and types.</p>
       </div>
-
       <div className="space-y-12">
-
-        {/* Core Components */}
         <section className="space-y-6">
           <div className="flex items-center gap-3 border-b border-gray-200 dark:border-gray-800 pb-2">
             <Package className="text-blue-500" size={24} />
             <h2 className="text-2xl font-bold text-gray-900 dark:text-white">Core Components</h2>
           </div>
-
           <div className="overflow-x-auto">
             <table className="w-full text-sm text-left border-collapse">
               <thead className="bg-gray-50 dark:bg-[#161b22] text-gray-700 dark:text-gray-300 border-y border-gray-200 dark:border-gray-800">
@@ -54,14 +47,11 @@ export const API = () => {
             </table>
           </div>
         </section>
-
-        {/* Core Hooks */}
         <section className="space-y-6">
           <div className="flex items-center gap-3 border-b border-gray-200 dark:border-gray-800 pb-2">
             <Hash className="text-yellow-500" size={24} />
             <h2 className="text-2xl font-bold text-gray-900 dark:text-white">Core Hooks</h2>
           </div>
-
           <div className="space-y-6">
             <div className="bg-white dark:bg-[#0d1117] border border-gray-200 dark:border-[#30363d] rounded-xl p-6 shadow-sm">
               <h3 className="font-mono text-lg font-bold text-gray-900 dark:text-white mb-2">useWindowActions()</h3>
@@ -99,7 +89,6 @@ export const API = () => {
                 </li>
               </ul>
             </div>
-
             <div className="bg-white dark:bg-[#0d1117] border border-gray-200 dark:border-[#30363d] rounded-xl p-6 shadow-sm">
               <h3 className="font-mono text-lg font-bold text-gray-900 dark:text-white mb-2">useWindows()</h3>
               <ul className="space-y-2 font-mono text-sm">
@@ -112,7 +101,6 @@ export const API = () => {
                 </li>
               </ul>
             </div>
-
             <div className="bg-white dark:bg-[#0d1117] border border-gray-200 dark:border-[#30363d] rounded-xl p-6 shadow-sm">
               <h3 className="font-mono text-lg font-bold text-gray-900 dark:text-white mb-2">useWindowSnap()</h3>
               <ul className="space-y-2 font-mono text-sm">
@@ -124,19 +112,15 @@ export const API = () => {
             </div>
           </div>
         </section>
-
-        {/* Interfaces */}
         <section className="space-y-6">
           <div className="flex items-center gap-3 border-b border-gray-200 dark:border-gray-800 pb-2">
             <GitBranch className="text-purple-500" size={24} />
             <h2 className="text-2xl font-bold text-gray-900 dark:text-white">Interfaces</h2>
           </div>
-
           <div className="space-y-8">
             <div>
               <h3 className="font-mono text-lg font-bold text-gray-900 dark:text-white mb-1">WindowDefinition</h3>
               <p className="text-sm text-gray-600 dark:text-gray-400 mb-4">(Used for opening windows)</p>
-
               <div className="overflow-x-auto rounded-xl border border-gray-200 dark:border-[#30363d] shadow-sm">
                 <table className="w-full text-sm text-left border-collapse">
                   <thead className="bg-gray-50 dark:bg-[#161b22] text-gray-700 dark:text-gray-300">
@@ -206,11 +190,9 @@ export const API = () => {
                 </table>
               </div>
             </div>
-
             <div>
               <h3 className="font-mono text-lg font-bold text-gray-900 dark:text-white mb-1">FolderDefinition</h3>
               <p className="text-sm text-gray-600 dark:text-gray-400 mb-4">(Used within Toolbars to group apps)</p>
-
               <div className="overflow-x-auto rounded-xl border border-gray-200 dark:border-[#30363d] shadow-sm">
                 <table className="w-full text-sm text-left border-collapse">
                   <thead className="bg-gray-50 dark:bg-[#161b22] text-gray-700 dark:text-gray-300">
@@ -245,7 +227,6 @@ export const API = () => {
                 </table>
               </div>
             </div>
-
             <p className="text-sm text-gray-500 dark:text-gray-400 italic">
               *Note: <code className="bg-gray-100 dark:bg-gray-800 px-1.5 py-0.5 rounded text-pink-500">ToolbarItem</code> is a union type of <code className="bg-gray-100 dark:bg-gray-800 px-1.5 py-0.5 rounded text-pink-500">WindowDefinition | FolderDefinition</code>.*
             </p>

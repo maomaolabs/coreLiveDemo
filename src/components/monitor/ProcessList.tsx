@@ -1,14 +1,11 @@
 import React from "react";
 import { useWindowActions } from "@maomaolabs/core";
 import { XCircle } from "lucide-react";
-
 interface ProcessListProps {
-  windows: any[]; // Using any to avoid strict type dependency hell for now, or update if we have the type exported
+  windows: any[];
 }
-
 export const ProcessList = ({ windows }: ProcessListProps) => {
   const { closeWindow, focusWindow } = useWindowActions();
-
   return (
     <div className="flex-1 overflow-auto">
       <table className="w-full text-sm text-left">

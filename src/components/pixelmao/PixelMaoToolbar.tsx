@@ -1,6 +1,5 @@
 import React from 'react';
 import { Eraser, PaintBucket, Trash2, Download, Undo, Redo, Grid, ZoomIn, ZoomOut, Pipette, FlipHorizontal, FlipVertical, Square, Circle, Minus } from 'lucide-react';
-
 interface PixelMaoToolbarProps {
   tool: 'pencil' | 'eraser' | 'fill' | 'eyedropper' | 'line' | 'rect' | 'circle';
   setTool: (tool: 'pencil' | 'eraser' | 'fill' | 'eyedropper' | 'line' | 'rect' | 'circle') => void;
@@ -15,7 +14,6 @@ interface PixelMaoToolbarProps {
   symmetry: 'none' | 'horizontal' | 'vertical' | 'both';
   setSymmetry: (sym: 'none' | 'horizontal' | 'vertical' | 'both') => void;
 }
-
 export const PixelMaoToolbar = ({
   tool,
   setTool,
@@ -33,7 +31,6 @@ export const PixelMaoToolbar = ({
   return (
     <div className="flex flex-wrap gap-2 items-center justify-between p-2 bg-white dark:bg-gray-800 border-b border-gray-300 dark:border-gray-700">
       <div className="flex gap-2 items-center overflow-x-auto">
-        {/* Tools */}
         <div className="flex gap-1 border-r border-gray-300 dark:border-gray-600 pr-2">
           <button
             onClick={() => setTool('pencil')}
@@ -64,8 +61,6 @@ export const PixelMaoToolbar = ({
             <Pipette size={16} />
           </button>
         </div>
-
-        {/* Shapes */}
         <div className="flex gap-1 border-r border-gray-300 dark:border-gray-600 pr-2">
           <button
             onClick={() => setTool('line')}
@@ -89,8 +84,6 @@ export const PixelMaoToolbar = ({
             <Circle size={16} />
           </button>
         </div>
-
-        {/* Symmetry */}
         <div className="flex gap-1 border-r border-gray-300 dark:border-gray-600 pr-2">
           <button
             onClick={() => setSymmetry(symmetry === 'horizontal' ? 'none' : 'horizontal')}
@@ -107,8 +100,6 @@ export const PixelMaoToolbar = ({
             <FlipVertical size={16} />
           </button>
         </div>
-
-        {/* History */}
         <div className="flex gap-1 border-r border-gray-300 dark:border-gray-600 pr-2">
           <button
             onClick={onUndo}
@@ -127,8 +118,6 @@ export const PixelMaoToolbar = ({
             <Redo size={16} />
           </button>
         </div>
-
-        {/* Grid Size */}
         <div className="flex items-center gap-1">
           <Grid size={16} className="text-gray-400 ml-1" />
           <select
@@ -143,8 +132,6 @@ export const PixelMaoToolbar = ({
           </select>
         </div>
       </div>
-
-      {/* Actions */}
       <div className="flex gap-1">
         <button
           onClick={onDownload}

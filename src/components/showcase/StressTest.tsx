@@ -1,8 +1,6 @@
 "use client";
-
 import { useWindowActions, useWindows } from "@maomaolabs/core";
 import { Zap, Trash2 } from "lucide-react";
-
 function DummyWindow() {
   return (
     <div className="w-full h-full flex flex-col items-center justify-center bg-neutral-900 border border-neutral-800 p-4 text-center">
@@ -11,22 +9,14 @@ function DummyWindow() {
     </div>
   );
 }
-
 export function StressTest() {
   const { openWindow, closeWindow } = useWindowActions();
   const windows = useWindows();
-
   const handleSpawn = (count: number) => {
-    // Current number of stress windows
     const currentCount = windows.filter(w => w.id.startsWith("stress-")).length;
-    // Hard limit to prevent browser collapse
     const MAX_WINDOWS = 100;
-
-    // Calculate how many we can actually spawn
     const spawnCount = Math.min(count, MAX_WINDOWS - currentCount);
-
     if (spawnCount <= 0) return;
-
     for (let i = 0; i < spawnCount; i++) {
       const id = `stress-${Date.now()}-${i}`;
       openWindow({
@@ -42,18 +32,14 @@ export function StressTest() {
       });
     }
   };
-
   const handleKillAll = () => {
-    // Note: We only close windows spawned by this test to avoid killing system apps
     windows.forEach(win => {
       if (win.id.startsWith("stress-")) {
         closeWindow(win.id);
       }
     });
   };
-
   const activeStressNodes = windows.filter(w => w.id.startsWith("stress-")).length;
-
   return (
     <div className="w-full h-full bg-neutral-950 p-6 flex flex-col">
       <div className="mb-8">
@@ -65,7 +51,6 @@ export function StressTest() {
           Dragging one window will <strong>never</strong> cause the others to re-render. Try it out.
         </p>
       </div>
-
       <div className="flex-1 flex flex-col items-center justify-center gap-6">
         <div className="grid grid-cols-2 gap-4 w-full max-w-sm">
           <button
@@ -81,12 +66,10 @@ export function StressTest() {
             +50 Windows
           </button>
         </div>
-
         <div className="text-center my-4">
           <p className="text-xs uppercase tracking-widest text-neutral-500 font-bold mb-1">Active Stress Nodes</p>
           <p className="text-6xl font-black text-white">{activeStressNodes}</p>
         </div>
-
         {activeStressNodes > 0 && (
           <button
             onClick={handleKillAll}

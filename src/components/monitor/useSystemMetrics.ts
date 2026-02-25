@@ -1,23 +1,18 @@
 import { useState, useEffect, useRef } from "react";
-
 export interface SystemMetrics {
   fps: number;
   memory: { used: number; total: number } | null;
   battery: { level: number; charging: boolean } | null;
   network: { rtt: number; type: string } | null;
 }
-
 export const useSystemMetrics = (): SystemMetrics => {
   const [fps, setFps] = useState(60);
   const [memory, setMemory] = useState<{ used: number; total: number } | null>(null);
   const [battery, setBattery] = useState<{ level: number; charging: boolean } | null>(null);
   const [network, setNetwork] = useState<{ rtt: number; type: string } | null>(null);
-
   const framesRef = useRef(0);
   const prevTimeRef = useRef(performance.now());
-
   useEffect(() => {
-    // 1. FPS Counter
     let requestID: number;
     const countFrames = () => {
       framesRef.current++;
@@ -30,8 +25,6 @@ export const useSystemMetrics = (): SystemMetrics => {
       requestID = requestAnimationFrame(countFrames);
     };
     requestID = requestAnimationFrame(countFrames);
-
-    // 2. Memory
     const updateMemory = () => {
       if ((performance as any).memory) {
         setMemory({
@@ -40,8 +33,6 @@ export const useSystemMetrics = (): SystemMetrics => {
         });
       }
     };
-
-    // 3. Network
     const updateNetwork = () => {
       const conn = (navigator as any).connection;
       if (conn) {
@@ -51,14 +42,11 @@ export const useSystemMetrics = (): SystemMetrics => {
         });
       }
     };
-
-    // 4. Battery
     const updateBattery = async () => {
       if ((navigator as any).getBattery) {
         try {
           const bat = await (navigator as any).getBattery();
           setBattery({ level: bat.level * 100, charging: bat.charging });
-
           bat.addEventListener('levelchange', () => setBattery({ level: bat.level * 100, charging: bat.charging }));
           bat.addEventListener('chargingchange', () => setBattery({ level: bat.level * 100, charging: bat.charging }));
         } catch (e) {
@@ -66,21 +54,17 @@ export const useSystemMetrics = (): SystemMetrics => {
         }
       }
     };
-
     updateBattery();
     updateMemory();
     updateNetwork();
-
     const interval = setInterval(() => {
       updateMemory();
       updateNetwork();
     }, 1000);
-
     return () => {
       cancelAnimationFrame(requestID);
       clearInterval(interval);
     };
   }, []);
-
   return { fps, memory, battery, network };
 };
