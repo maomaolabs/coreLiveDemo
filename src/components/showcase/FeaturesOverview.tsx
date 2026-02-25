@@ -48,7 +48,7 @@ export function App() {
   };
 
   return (
-    <section className="py-24 px-6 md:px-12 max-w-[90rem] mx-auto w-full @container">
+    <section className="py-24 px-4 sm:px-6 md:px-12 max-w-[90rem] mx-auto w-full @container">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -102,7 +102,7 @@ export function App() {
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
-        className="grid grid-cols-[repeat(auto-fit,minmax(min(100%,400px),1fr))] gap-12 items-center bg-white/40 dark:bg-white/5 backdrop-blur-3xl border border-black/5 dark:border-white/10 rounded-[3rem] p-8 md:p-16 shadow-2xl shadow-black/5 dark:shadow-black/20 ring-1 ring-black/5 dark:ring-white/5"
+        className="grid grid-cols-[repeat(auto-fit,minmax(min(100%,400px),1fr))] gap-8 md:gap-12 items-center bg-white/40 dark:bg-white/5 backdrop-blur-3xl border border-black/5 dark:border-white/10 rounded-3xl md:rounded-[3rem] p-6 md:p-16 shadow-2xl shadow-black/5 dark:shadow-black/20 ring-1 ring-black/5 dark:ring-white/5"
       >
         <div className="md:pr-8 flex-1">
           <h3 className="text-3xl md:text-4xl font-bold mb-6 tracking-tight text-slate-900 dark:text-white antialiased text-balance">Dead Simple Integration</h3>
@@ -114,7 +114,7 @@ export function App() {
             Need a taskbar? The optional <code className="bg-black/5 dark:bg-black/40 px-2 py-1 rounded-lg text-slate-900 dark:text-slate-200 font-mono text-sm border border-black/5 dark:border-white/5 shadow-sm whitespace-nowrap">Toolbar</code> component automatically syncs with active windows, handling minimization rules and folder groups out-of-the-box.
           </p>
         </div>
-        <div className="flex-1 rounded-[2.5rem] overflow-hidden border border-black/5 dark:border-white/10 shadow-2xl shadow-black/10 dark:shadow-black/40 min-w-[280px]">
+        <div className="flex-1 rounded-[2rem] sm:rounded-[2.5rem] overflow-hidden border border-black/5 dark:border-white/10 shadow-2xl shadow-black/10 dark:shadow-black/40 w-full min-w-0">
           <CodeSnippet code={integrationSnippet} />
         </div>
       </motion.div>

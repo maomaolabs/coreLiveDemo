@@ -38,12 +38,12 @@ export function HeroSection() {
           A standalone, lightweight React library that brings complete, performant, and responsive window management to your browser.
         </motion.p>
 
-        <motion.div variants={item} className="flex flex-wrap justify-center items-center gap-4 sm:gap-5 text-sm font-semibold w-full px-6 mb-24">
+        <motion.div variants={item} className="flex flex-wrap justify-center items-center gap-4 sm:gap-5 text-sm font-semibold w-full px-4 sm:px-6 mb-24">
           <a
             href="https://github.com/maomaolabs"
             target="_blank"
             rel="noreferrer"
-            className="flex flex-1 min-w-[200px] max-w-[240px] items-center justify-center px-8 py-4 rounded-full bg-slate-900 dark:bg-white text-white dark:text-slate-900 hover:scale-[1.03] transition-all duration-300 ease-out shadow-[0_8px_30px_rgb(0,0,0,0.12)] dark:shadow-[0_8px_30px_rgb(255,255,255,0.12)] hover:shadow-[0_8px_30px_rgb(0,0,0,0.2)] dark:hover:shadow-[0_8px_30px_rgb(255,255,255,0.2)]"
+            className="flex w-full sm:flex-1 sm:min-w-[160px] sm:max-w-[240px] items-center justify-center px-8 py-4 rounded-full bg-slate-900 dark:bg-white text-white dark:text-slate-900 hover:scale-[1.03] transition-all duration-300 ease-out shadow-[0_8px_30px_rgb(0,0,0,0.12)] dark:shadow-[0_8px_30px_rgb(255,255,255,0.12)] hover:shadow-[0_8px_30px_rgb(0,0,0,0.2)] dark:hover:shadow-[0_8px_30px_rgb(255,255,255,0.2)]"
           >
             Explore GitHub
           </a>
@@ -51,7 +51,7 @@ export function HeroSection() {
             href="https://www.npmjs.com/package/@maomaolabs/core?activeTab=readme"
             target="_blank"
             rel="noreferrer"
-            className="flex flex-1 min-w-[200px] max-w-[240px] items-center justify-center px-8 py-4 rounded-full bg-white/50 dark:bg-black/20 text-slate-700 dark:text-slate-300 border border-black/5 dark:border-white/10 hover:scale-[1.03] hover:bg-white/80 dark:hover:bg-white/5 transition-all duration-300 ease-out shadow-sm backdrop-blur-xl"
+            className="flex w-full sm:flex-1 sm:min-w-[160px] sm:max-w-[240px] items-center justify-center px-8 py-4 rounded-full bg-white/50 dark:bg-black/20 text-slate-700 dark:text-slate-300 border border-black/5 dark:border-white/10 hover:scale-[1.03] hover:bg-white/80 dark:hover:bg-white/5 transition-all duration-300 ease-out shadow-sm backdrop-blur-xl"
           >
             View on npm
           </a>
