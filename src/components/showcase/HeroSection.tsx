@@ -26,7 +26,7 @@ export function HeroSection() {
       >
         <motion.div variants={item} className="inline-flex items-center gap-2 px-5 py-2 rounded-full border border-black/5 dark:border-white/10 bg-white/40 dark:bg-white/5 backdrop-blur-2xl text-slate-600 dark:text-slate-300 text-xs font-medium mb-10 shadow-sm ring-1 ring-black/[0.03] dark:ring-white/[0.05]">
           <span className="flex h-2 w-2 rounded-full bg-blue-500"></span>
-          @maomaolabs/core v1.0.1
+          @maomaolabs/core v1.0.2
         </motion.div>
 
         <motion.h1 variants={item} className="text-5xl md:text-[clamp(3.5rem,8vw,5.5rem)] font-bold tracking-tighter mb-8 text-slate-900 dark:text-white antialiased leading-[1.05] text-balance">
