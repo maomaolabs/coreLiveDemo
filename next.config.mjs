@@ -3,7 +3,7 @@ const nextConfig = {
   output: 'export',
   basePath: '/coreLiveDemo',
   images: {
-    optimized: true,
+    unoptimized: true,
   },
 };
 
