@@ -1,9 +1,9 @@
 "use client";
 
 import { useEffect } from "react";
-import Image from "next/image";
 import { useWindowActions } from "@maomaolabs/core";
 import { APPS } from "@/config/Windows";
+import { assetPath } from "@/lib/assetPath";
 
 export default function Page() {
   const { openWindow } = useWindowActions();
@@ -20,12 +20,10 @@ export default function Page() {
   return (
     <div className="relative w-full h-screen pointer-events-none">
       <div className="absolute inset-0">
-        <Image
-          src="/wallpaper.jpg"
+        <img
+          src={assetPath("/wallpaper.jpg")}
           alt="Cloud Wallpaper"
-          fill
-          className="object-cover"
-          priority
+          className="absolute inset-0 w-full h-full object-cover"
         />
       </div>
       <div className="absolute inset-0 pointer-events-none mix-blend-screen bg-indigo-500/[0.05]" />
