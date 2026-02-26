@@ -1,5 +1,6 @@
 "use client";
 import { motion, Variants } from "framer-motion";
+import { assetPath } from "@/lib/assetPath";
 
 export function HeroSection() {
 
@@ -63,7 +64,7 @@ export function HeroSection() {
           <div className="absolute top-0 inset-x-0 h-[1px] bg-gradient-to-r from-transparent via-white/40 to-transparent z-10 pointer-events-none"></div>
 
           <img
-            src="/assets/0.gif"
+            src={assetPath("/assets/0.gif")}
             alt="MaoMao OS Hero Window"
             className="block w-full h-auto object-cover object-top hover:scale-[1.02] transition-transform duration-1000 ease-out"
             loading="eager"

@@ -1,6 +1,7 @@
 import { Layout, Maximize2, Zap, MonitorSmartphone } from "lucide-react";
 import { CodeSnippet } from "./CodeSnippet";
 import { motion } from "framer-motion";
+import { assetPath } from "@/lib/assetPath";
 
 export function FeaturesOverview() {
   const integrationSnippet = `
@@ -73,28 +74,28 @@ export function App() {
           icon={<Zap className="text-slate-700 dark:text-slate-300" size={24} strokeWidth={1.5} />}
           title="Uncompromised Performance"
           description="Context splitting ensures zero unnecessary re-renders when windows are dragged or resized."
-          mediaSrc="/assets/1.png"
+          mediaSrc={assetPath("/assets/1.png")}
         />
         <FeatureCard
           variants={itemVariants}
           icon={<Maximize2 className="text-slate-700 dark:text-slate-300" size={24} strokeWidth={1.5} />}
           title="Native Snapping"
           description="Drag windows to screen edges to snap them seamlessly, just like Windows Aero."
-          mediaSrc="/assets/5.gif"
+          mediaSrc={assetPath("/assets/5.gif")}
         />
         <FeatureCard
           variants={itemVariants}
           icon={<Layout className="text-slate-700 dark:text-slate-300" size={24} strokeWidth={1.5} />}
           title="Built-in Toolbar"
           description="Highly customizable taskbar with support for grouped applications in folders."
-          mediaSrc="/assets/7.png"
+          mediaSrc={assetPath("/assets/7.png")}
         />
         <FeatureCard
           variants={itemVariants}
           icon={<MonitorSmartphone className="text-slate-700 dark:text-slate-300" size={24} strokeWidth={1.5} />}
           title="Window Lifecycle"
           description="Drag, resize, minimize to toolbar, and maximize natively with fluid animations."
-          mediaSrc="/assets/4.gif"
+          mediaSrc={assetPath("/assets/4.gif")}
         />
       </motion.div>
 

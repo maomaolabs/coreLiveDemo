@@ -1,6 +1,7 @@
 "use client";
 import { motion } from "framer-motion";
-const ASSETS_BASE = "/assets/";
+import { assetPath } from "@/lib/assetPath";
+const ASSETS_BASE = assetPath("/assets/");
 type MediaItem = {
   src: string;
   type: "image" | "gif";
