@@ -4,7 +4,7 @@ import { assetPath } from "@/lib/assetPath";
 const ASSETS_BASE = assetPath("/assets/");
 type MediaItem = {
   src: string;
-  type: "image" | "gif";
+  type: "image" | "video";
   label: string;
   caption: string;
   wide?: boolean;
@@ -18,14 +18,14 @@ const MEDIA_ITEMS: MediaItem[] = [
     wide: true,
   },
   {
-    src: `${ASSETS_BASE}4.gif`,
-    type: "gif",
+    src: `${ASSETS_BASE}4.webm`,
+    type: "video",
     label: "Window Interactions",
     caption: "Drag, resize, minimize, and maximize in real time.",
   },
   {
-    src: `${ASSETS_BASE}5.gif`,
-    type: "gif",
+    src: `${ASSETS_BASE}5.webm`,
+    type: "video",
     label: "Snap Engine",
     caption: "Native-feeling edge and corner snapping with live preview overlays.",
   },
@@ -80,17 +80,28 @@ function HeroMedia({ item }: { item: MediaItem }) {
       className="group relative rounded-[2rem] overflow-hidden shadow-2xl shadow-black/10 dark:shadow-black/40 ring-1 ring-black/5 dark:ring-white/10 bg-black"
     >
       <div className="absolute top-4 left-4 z-10 flex items-center gap-2 px-3 py-1.5 rounded-full bg-black/30 dark:bg-black/50 backdrop-blur-xl border border-white/10 text-white text-xs font-medium shadow-sm pointer-events-none">
-        {item.type === "gif" && (
+        {item.type === "video" && (
           <span className="flex h-1.5 w-1.5 rounded-full bg-red-400 animate-pulse"></span>
         )}
         {item.label}
       </div>
-      <img
-        src={item.src}
-        alt={item.label}
-        className="w-full object-cover block"
-        loading="lazy"
-      />
+      {item.type === "video" ? (
+        <video
+          src={item.src}
+          autoPlay
+          loop
+          muted
+          playsInline
+          className="w-full object-cover block"
+        />
+      ) : (
+        <img
+          src={item.src}
+          alt={item.label}
+          className="w-full object-cover block"
+          loading="lazy"
+        />
+      )}
       <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-black/70 to-transparent translate-y-2 group-hover:translate-y-0 opacity-0 group-hover:opacity-100 transition-all duration-500 flex items-end p-6 pointer-events-none">
         <p className="text-white/90 text-sm font-medium leading-snug">{item.caption}</p>
       </div>
@@ -107,18 +118,29 @@ function MediaCard({ item, index }: { item: MediaItem; index: number }) {
       className="group relative rounded-[1.75rem] overflow-hidden ring-1 ring-black/5 dark:ring-white/10 shadow-xl shadow-black/5 dark:shadow-black/30 bg-black flex flex-col"
     >
       <div className="absolute top-3 left-3 z-10 flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-black/40 backdrop-blur-xl border border-white/10 text-white text-[11px] font-medium pointer-events-none">
-        {item.type === "gif" && (
+        {item.type === "video" && (
           <span className="flex h-1.5 w-1.5 rounded-full bg-red-400 animate-pulse"></span>
         )}
         {item.label}
       </div>
       <div className="overflow-hidden flex-1">
-        <img
-          src={item.src}
-          alt={item.label}
-          className="w-full h-full object-cover block group-hover:scale-[1.02] transition-transform duration-700 ease-out"
-          loading="lazy"
-        />
+        {item.type === "video" ? (
+          <video
+            src={item.src}
+            autoPlay
+            loop
+            muted
+            playsInline
+            className="w-full h-full object-cover block"
+          />
+        ) : (
+          <img
+            src={item.src}
+            alt={item.label}
+            className="w-full h-full object-cover block group-hover:scale-[1.02] transition-transform duration-700 ease-out"
+            loading="lazy"
+          />
+        )}
       </div>
       <div className="p-5 bg-white/5 dark:bg-black/60 backdrop-blur-xl border-t border-white/10">
         <p className="text-slate-700 dark:text-slate-300 text-sm font-medium leading-relaxed">{item.caption}</p>

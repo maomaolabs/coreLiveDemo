@@ -81,7 +81,7 @@ export function App() {
           icon={<Maximize2 className="text-slate-700 dark:text-slate-300" size={24} strokeWidth={1.5} />}
           title="Native Snapping"
           description="Drag windows to screen edges to snap them seamlessly, just like Windows Aero."
-          mediaSrc={assetPath("/assets/5.gif")}
+          mediaSrc={assetPath("/assets/5.webm")}
         />
         <FeatureCard
           variants={itemVariants}
@@ -95,7 +95,7 @@ export function App() {
           icon={<MonitorSmartphone className="text-slate-700 dark:text-slate-300" size={24} strokeWidth={1.5} />}
           title="Window Lifecycle"
           description="Drag, resize, minimize to toolbar, and maximize natively with fluid animations."
-          mediaSrc={assetPath("/assets/4.gif")}
+          mediaSrc={assetPath("/assets/4.webm")}
         />
       </motion.div>
 
@@ -128,8 +128,19 @@ function FeatureCard({ icon, title, description, mediaSrc, variants }: { icon: R
     <motion.div variants={variants} className="bg-white/40 dark:bg-white/5 backdrop-blur-2xl border border-black/5 dark:border-white/10 p-2 pb-8 rounded-[2rem] hover:scale-[1.02] hover:bg-white/60 dark:hover:bg-white/10 transition-all duration-500 ease-out group ring-1 ring-black/5 dark:ring-white/5 shadow-xl shadow-black-[0.03] dark:shadow-black/20 flex flex-col items-start w-full min-w-0 overflow-hidden">
       {mediaSrc ? (
         <div className="w-full aspect-video bg-black/5 dark:bg-black/50 rounded-[1.5rem] mb-6 overflow-hidden relative shadow-inner ring-1 ring-black/5 dark:ring-white/10">
-          <img src={mediaSrc} alt={title} className="w-full h-full object-cover block group-hover:scale-105 transition-transform duration-700 ease-out" loading="lazy" />
-          {mediaSrc.endsWith('.gif') && (
+          {mediaSrc.endsWith('.webm') ? (
+            <video
+              src={mediaSrc}
+              autoPlay
+              loop
+              muted
+              playsInline
+              className="w-full h-full object-cover block"
+            />
+          ) : (
+            <img src={mediaSrc} alt={title} className="w-full h-full object-cover block group-hover:scale-105 transition-transform duration-700 ease-out" loading="lazy" />
+          )}
+          {mediaSrc.endsWith('.webm') && (
             <div className="absolute top-3 right-3 flex items-center gap-1.5 px-2 py-1 rounded-full bg-black/40 backdrop-blur-xl border border-white/10 shadow-sm">
               <span className="flex h-1.5 w-1.5 rounded-full bg-red-400 animate-pulse"></span>
             </div>
