@@ -1,5 +1,5 @@
 import { ToolbarItem } from '@maomaolabs/core';
-import { Activity, BookOpen, Sparkles, Terminal, FlaskConical, Zap, Radar, Radio, RadioReceiver, Pencil } from 'lucide-react';
+import { Activity, BookOpen, Sparkles, Terminal, FlaskConical, Zap, Radar, Radio, RadioReceiver, Pencil, Palette, WandSparkles, SunMoon, Braces } from 'lucide-react';
 import { AppOverview } from '@/components/showcase/AppOverview';
 import { WindowPlayground } from '@/components/showcase/WindowPlayground';
 import { SystemMonitor } from '@/components/monitor/SystemMonitor';
@@ -9,6 +9,8 @@ import { SignalSender } from '@/components/showcase/SignalSender';
 import { SignalReceiver } from '@/components/showcase/SignalReceiver';
 import { DocsApp } from '@/components/DocsApp';
 import { PixelMao } from '@/components/pixelmao/PixelMao';
+import { AppearanceSettings } from '@/components/settings/AppearanceSettings';
+import { ThemeStudio } from '@/components/settings/ThemeStudio';
 
 export const APPS = {
   overview: {
@@ -50,6 +52,22 @@ export const APPS = {
     component: <PixelMao />,
     initialSize: { width: 900, height: 750 },
     initialPosition: { x: 50, y: 50 },
+  },
+  settings: {
+    id: 'appearance-settings',
+    title: 'Themes',
+    icon: <Palette size={20} color="#c0abf1ff" />,
+    component: <AppearanceSettings />,
+    initialSize: { width: 850, height: 600 },
+    initialPosition: { x: 250, y: 150 },
+  },
+  themeStudio: {
+    id: 'theme-studio',
+    title: 'Theme Studio',
+    icon: <WandSparkles size={20} color="#ec4899" />,
+    component: <ThemeStudio />,
+    initialSize: { width: 700, height: 550 },
+    initialPosition: { x: 300, y: 200 },
   }
 };
 
@@ -93,11 +111,36 @@ export const DEMO_LAB_FOLDER = {
   ]
 };
 
+export const THEME_FOLDER = {
+  id: 'theme-folder',
+  title: 'Theming',
+  icon: <Palette size={20} color="#8b5cf6" />,
+  apps: [
+    {
+      id: 'appearance-settings',
+      title: 'Theme',
+      icon: <SunMoon size={20} color="#8b5cf6" />,
+      component: <AppearanceSettings />,
+      initialSize: { width: 850, height: 600 },
+      isMaximized: false
+    },
+    {
+      id: 'theme-studio',
+      title: 'Theme Studio',
+      icon: <Braces size={20} color="#ec4899" />,
+      component: <ThemeStudio />,
+      initialSize: { width: 700, height: 550 },
+      isMaximized: false
+    }
+  ]
+};
+
 export const windows: ToolbarItem[] = [
   APPS.overview,
   APPS.builder,
-  DEMO_LAB_FOLDER,
   APPS.monitor,
   APPS.docs,
   APPS.pixel,
+  DEMO_LAB_FOLDER,
+  THEME_FOLDER
 ];
