@@ -25,7 +25,7 @@ interface StyleProviderProps {
 }
 
 export function StyleProvider({ children }: StyleProviderProps) {
-  const [currentStyle, setCurrentStyle] = useState<SystemStyleType>('linux');
+  const [currentStyle, setCurrentStyle] = useState<SystemStyleType>('default');
   const [customCss, setCustomCssState] = useState<string>('');
   const [isMounted, setIsMounted] = useState(false);
 
