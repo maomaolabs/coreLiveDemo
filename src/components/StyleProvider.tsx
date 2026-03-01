@@ -25,14 +25,13 @@ interface StyleProviderProps {
 }
 
 export function StyleProvider({ children }: StyleProviderProps) {
-  const [currentStyle, setCurrentStyle] = useState<SystemStyleType>('linux');
+  const [currentStyle, setCurrentStyle] = useState<SystemStyleType>('default');
   const [customCss, setCustomCssState] = useState<string>('');
   const [isMounted, setIsMounted] = useState(false);
 
   useEffect(() => {
     try {
       const savedStyle = localStorage.getItem('mao_os_style') as SystemStyleType;
-      // Eliminada validación restrictiva de array para soportar temas custom
       if (savedStyle) setCurrentStyle(savedStyle);
 
       const savedCss = localStorage.getItem('mao_os_custom_css');
