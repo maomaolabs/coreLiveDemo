@@ -18,7 +18,7 @@ export function HeroSection() {
   };
 
   return (
-    <section className="flex flex-col items-center justify-start min-h-screen text-center px-6 relative pt-24 md:pt-32 pb-16">
+    <section className="flex flex-col items-center justify-start min-h-screen text-center px-6 relative pt-12 md:pt-4 pb-4">
       <motion.div
         variants={container}
         initial="hidden"

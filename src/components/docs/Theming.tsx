@@ -45,9 +45,9 @@ export const Theming = () => (
         {[
           { id: 'default', desc: 'Clean, neutral, minimalist.' },
           { id: 'traffic', desc: 'Colored dot window controls.' },
-          { id: 'linux', desc: 'Modern Ubuntu-inspired style.' },
+          { id: 'linux', desc: 'Modern Linux-inspired style.' },
           { id: 'yk2000', desc: 'Classic 90s/00s retro look.' },
-          { id: 'aero', desc: 'Glass blur translucent effect.' },
+          { id: 'aero', desc: 'Glass blur effect.' },
         ].map(t => (
           <li key={t.id} className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 p-3 rounded-lg shadow-sm">
             <code className="text-pink-600 dark:text-pink-400 font-bold block mb-1">{t.id}</code>

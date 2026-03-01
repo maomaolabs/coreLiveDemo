@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { BookOpen, Code, Settings, Package, Palette } from 'lucide-react';
 import { Installation } from './docs/Installation';
 import { API } from './docs/API';
@@ -18,29 +18,34 @@ type SectionId = typeof DOC_SECTIONS[number]['id'];
 
 export const DocsApp = () => {
   const [activeSection, setActiveSection] = useState<SectionId>('installation');
+  const scrollRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (scrollRef.current) scrollRef.current.scrollTop = 0;
+  }, [activeSection]);
 
   return (
-    <div className="@container relative w-full h-full bg-[#0d0d12] font-sans text-white antialiased overflow-hidden">
+    <div className="@container relative w-full h-full bg-slate-50 dark:bg-[#0d0d12] font-sans text-slate-800 dark:text-white antialiased overflow-hidden">
 
       {/* Ambient light */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none z-0">
-        <div className="absolute top-[-30%] left-[-15%] w-[600px] h-[600px] bg-violet-600/10 blur-[120px] rounded-full" />
-        <div className="absolute bottom-[-20%] right-[-10%] w-[500px] h-[500px] bg-blue-600/10 blur-[100px] rounded-full" />
+        <div className="absolute top-[-30%] left-[-15%] w-[600px] h-[600px] bg-violet-400/5 dark:bg-violet-600/10 blur-[120px] rounded-full" />
+        <div className="absolute bottom-[-20%] right-[-10%] w-[500px] h-[500px] bg-blue-400/5 dark:bg-blue-600/10 blur-[100px] rounded-full" />
       </div>
 
       <div className="relative z-10 w-full h-full flex flex-col @[560px]:flex-row">
 
         {/* ── Sidebar (wide) ─────────────────────────────── */}
-        <aside className="hidden @[560px]:flex flex-col w-[200px] shrink-0 border-r border-white/[0.06] bg-white/[0.02] overflow-y-auto">
+        <aside className="hidden @[560px]:flex flex-col w-[200px] shrink-0 border-r border-slate-200 dark:border-white/[0.06] bg-white dark:bg-white/[0.02] overflow-y-auto">
           {/* Brand */}
-          <div className="p-4 pb-3 border-b border-white/[0.06]">
+          <div className="p-4 pb-3 border-b border-slate-200 dark:border-white/[0.06]">
             <div className="flex items-center gap-2 mb-1">
-              <div className="p-1.5 rounded-lg bg-gradient-to-br from-violet-500/30 to-blue-500/30 border border-white/10">
-                <BookOpen size={13} className="text-violet-300" />
+              <div className="p-1.5 rounded-lg bg-gradient-to-br from-violet-100 dark:from-violet-500/30 to-blue-100 dark:to-blue-500/30 border border-violet-200 dark:border-white/10">
+                <BookOpen size={13} className="text-violet-600 dark:text-violet-300" />
               </div>
-              <span className="font-bold text-sm text-white tracking-tight">Mao Docs</span>
+              <span className="font-bold text-sm text-slate-800 dark:text-white tracking-tight">Mao Docs</span>
             </div>
-            <p className="text-[10px] text-slate-600 font-mono ml-0.5">@maomaolabs/core v1.1.0</p>
+            <p className="text-[10px] text-slate-400 dark:text-slate-600 font-mono ml-0.5">@maomaolabs/core v1.1.0</p>
           </div>
 
           {/* Nav */}
@@ -53,11 +58,11 @@ export const DocsApp = () => {
                   onClick={() => setActiveSection(s.id)}
                   className={`w-full flex items-center gap-2.5 px-3 py-2 text-sm rounded-xl text-left transition-all duration-150 outline-none
                     ${active
-                      ? 'bg-violet-500/15 text-white border border-violet-500/20 font-semibold'
-                      : 'text-slate-500 font-medium hover:bg-white/[0.04] hover:text-slate-200 border border-transparent'
+                      ? 'bg-violet-50 dark:bg-violet-500/15 text-violet-700 dark:text-white border border-violet-200 dark:border-violet-500/20 font-semibold'
+                      : 'text-slate-500 dark:text-slate-500 font-medium hover:bg-slate-100 dark:hover:bg-white/[0.04] hover:text-slate-700 dark:hover:text-slate-200 border border-transparent'
                     }`}
                 >
-                  <span className={`shrink-0 transition-colors ${active ? 'text-violet-400' : 'text-slate-600'}`}>
+                  <span className={`shrink-0 transition-colors ${active ? 'text-violet-600 dark:text-violet-400' : 'text-slate-400 dark:text-slate-600'}`}>
                     {s.icon}
                   </span>
                   <span className="truncate">{s.label}</span>
@@ -66,8 +71,8 @@ export const DocsApp = () => {
             })}
           </nav>
 
-          <div className="p-3 border-t border-white/[0.05]">
-            <p className="text-[10px] text-slate-700 text-center">Made with 💜 by MaoMao Labs</p>
+          <div className="p-3 border-t border-slate-100 dark:border-white/[0.05]">
+            <p className="text-[10px] text-slate-400 dark:text-slate-700 text-center">Made with 💜 by MaoMao Labs</p>
           </div>
         </aside>
 
@@ -75,7 +80,7 @@ export const DocsApp = () => {
         <div className="flex-1 flex flex-col min-w-0 overflow-hidden">
 
           {/* Mobile tab bar */}
-          <nav className="@[560px]:hidden flex shrink-0 border-b border-white/[0.06] bg-white/[0.03] relative overflow-x-auto">
+          <nav className="@[560px]:hidden flex shrink-0 border-b border-slate-200 dark:border-white/[0.06] bg-white dark:bg-white/[0.03] relative overflow-x-auto">
             {DOC_SECTIONS.map((s) => {
               const active = activeSection === s.id;
               return (
@@ -83,28 +88,28 @@ export const DocsApp = () => {
                   key={s.id}
                   onClick={() => setActiveSection(s.id)}
                   className={`relative flex-1 flex flex-col items-center justify-center gap-0.5 px-2 py-2.5 text-[10px] font-semibold tracking-wide transition-all duration-200 outline-none
-                    ${active ? 'text-violet-400' : 'text-slate-600 hover:text-slate-400'}`}
+                    ${active ? 'text-violet-600 dark:text-violet-400' : 'text-slate-400 dark:text-slate-600 hover:text-slate-600 dark:hover:text-slate-400'}`}
                 >
                   <span className={`transition-transform duration-200 ${active ? 'scale-110' : ''}`}>{s.icon}</span>
                   {s.label}
-                  {active && <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-6 h-[2px] bg-violet-500 rounded-full" />}
+                  {active && <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-6 h-[2px] bg-violet-500 dark:bg-violet-500 rounded-full" />}
                 </button>
               );
             })}
           </nav>
 
           {/* Scrollable content */}
-          <div className="flex-1 overflow-y-auto overflow-x-hidden min-w-0">
+          <div ref={scrollRef} className="flex-1 overflow-y-auto overflow-x-hidden min-w-0">
             <div className="p-4 @[560px]:p-6">
               {/* Content card */}
-              <div className="bg-white/[0.02] border border-white/[0.06] rounded-2xl p-5 @[560px]:p-7 shadow-2xl min-w-0">
+              <div className="bg-white dark:bg-white/[0.02] border border-slate-200 dark:border-white/[0.06] rounded-2xl p-5 @[560px]:p-7 shadow-sm dark:shadow-2xl min-w-0">
                 {activeSection === 'installation' && <Installation />}
                 {activeSection === 'usage' && <BasicUsage />}
                 {activeSection === 'api' && <API />}
                 {activeSection === 'theming' && <Theming />}
                 {activeSection === 'contribution' && <Contribution />}
 
-                <div className="mt-10 pt-4 border-t border-white/[0.05] flex flex-wrap gap-2 justify-between items-center text-[10px] text-slate-700 font-medium">
+                <div className="mt-10 pt-4 border-t border-slate-100 dark:border-white/[0.05] flex flex-wrap gap-2 justify-between items-center text-[10px] text-slate-400 dark:text-slate-700 font-medium">
                   <span>Last updated: March 2026</span>
                   <span>Made with 💜 by MaoMao Labs</span>
                 </div>

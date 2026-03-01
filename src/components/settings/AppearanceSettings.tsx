@@ -62,10 +62,11 @@ const THEMES: ThemeCard[] = [
 
 function ThemePreview({ preview }: { preview: ThemeCard["preview"] }) {
   return (
-    <div className="w-full h-14 rounded-lg overflow-hidden border border-white/10 shadow-inner mb-4"
-      style={{ background: "linear-gradient(135deg, #0f172a 0%, #1e293b 100%)" }}>
-      <div className="h-5 flex items-center gap-1.5 px-2.5"
-        style={{ background: preview.bar }}>
+    <div
+      className="w-full h-14 rounded-lg overflow-hidden border border-black/10 dark:border-white/10 shadow-inner mb-4"
+      style={{ background: "linear-gradient(135deg, #0f172a 0%, #1e293b 100%)" }}
+    >
+      <div className="h-5 flex items-center gap-1.5 px-2.5" style={{ background: preview.bar }}>
         {[preview.close, preview.min, preview.max].map((c, i) => (
           <span key={i} className="w-2 h-2 rounded-full" style={{ background: c }} />
         ))}
@@ -84,16 +85,18 @@ export function AppearanceSettings() {
   const { openWindow } = useWindowActions();
 
   return (
-    <div className="@container flex flex-col h-full bg-[#0f1117] overflow-y-auto">
+    <div className="@container flex flex-col h-full bg-slate-50 dark:bg-[#0f1117] overflow-y-auto">
       {/* Header */}
       <div className="px-5 @[480px]:px-8 pt-6 @[480px]:pt-8 pb-5">
         <div className="flex items-center gap-3 mb-1">
-          <div className="p-2 rounded-xl bg-gradient-to-br from-violet-500/20 to-indigo-500/20 border border-violet-500/20">
-            <WandSparkles size={18} className="text-violet-400" />
+          <div className="p-2 rounded-xl bg-violet-100 dark:bg-violet-500/20 border border-violet-200 dark:border-violet-500/20">
+            <WandSparkles size={18} className="text-violet-600 dark:text-violet-400" />
           </div>
-          <h2 className="text-xl @[480px]:text-2xl font-bold text-white tracking-tight">System Appearance</h2>
+          <h2 className="text-xl @[480px]:text-2xl font-bold text-slate-900 dark:text-white tracking-tight">
+            System Appearance
+          </h2>
         </div>
-        <p className="text-slate-400 text-xs @[480px]:text-sm mt-1 ml-0.5">
+        <p className="text-slate-500 dark:text-slate-400 text-xs @[480px]:text-sm mt-1 ml-0.5">
           Choose a system theme. Your preference is saved automatically.
         </p>
       </div>
@@ -110,13 +113,13 @@ export function AppearanceSettings() {
               className={`
                 relative group text-left flex flex-col p-4 rounded-2xl border transition-all duration-200
                 ${isActive
-                  ? "border-violet-500/60 bg-violet-500/10 shadow-lg shadow-violet-500/10"
-                  : "border-white/[0.07] bg-white/[0.03] hover:border-white/20 hover:bg-white/[0.06]"}
+                  ? "border-violet-500 bg-violet-50 dark:bg-violet-500/10 shadow-lg shadow-violet-200 dark:shadow-violet-500/10"
+                  : "border-slate-200 dark:border-white/[0.07] bg-white dark:bg-white/[0.03] hover:border-violet-300 dark:hover:border-white/20 hover:shadow-md"}
               `}
             >
               {/* Active badge */}
               {isActive && (
-                <div className="absolute top-3 right-3 flex items-center gap-1 text-[10px] font-semibold text-violet-300 bg-violet-500/20 px-2 py-0.5 rounded-full border border-violet-500/30">
+                <div className="absolute top-3 right-3 flex items-center gap-1 text-[10px] font-semibold text-violet-700 dark:text-violet-300 bg-violet-100 dark:bg-violet-500/20 px-2 py-0.5 rounded-full border border-violet-300 dark:border-violet-500/30">
                   <CheckCircle2 size={9} />
                   Active
                 </div>
@@ -130,9 +133,9 @@ export function AppearanceSettings() {
                 <div className={`p-1.5 rounded-lg bg-gradient-to-br ${theme.accent} opacity-90`}>
                   <span className="text-white">{theme.icon}</span>
                 </div>
-                <h3 className="text-sm font-semibold text-white">{theme.name}</h3>
+                <h3 className="text-sm font-semibold text-slate-800 dark:text-white">{theme.name}</h3>
               </div>
-              <p className="text-xs text-slate-400 leading-relaxed">{theme.description}</p>
+              <p className="text-xs text-slate-500 dark:text-slate-400 leading-relaxed">{theme.description}</p>
             </button>
           );
         })}

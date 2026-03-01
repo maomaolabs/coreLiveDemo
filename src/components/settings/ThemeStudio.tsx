@@ -2,39 +2,31 @@
 
 import { useSystemStyle } from "@/components/StyleProvider";
 import { useState, useEffect } from "react";
-import { Play, Save, SlidersHorizontal, FileCode2, BookOpen, Wand2, CheckCheck } from "lucide-react";
+import { Play, Save, SlidersHorizontal, FileCode2, BookOpen, CheckCheck } from "lucide-react";
 import { THEME_STUDIO_CSS_BOILERPLATE } from "@/lib/themeBoilerplate";
 
 // ─── ColorRow ────────────────────────────────────────────────────────────────
 
-function ColorRow({
-  label, hint, value, onChange,
-}: {
+function ColorRow({ label, hint, value, onChange }: {
   label: string; hint: string; value: string; onChange: (v: string) => void;
 }) {
   return (
     <div className="space-y-2">
       <div className="flex items-baseline justify-between gap-2">
-        <label className="text-xs font-semibold text-slate-300 uppercase tracking-wider">{label}</label>
-        <span className="text-[10px] font-mono text-slate-600 truncate">{hint}</span>
+        <label className="text-xs font-semibold text-slate-600 dark:text-slate-300 uppercase tracking-wider">{label}</label>
+        <span className="text-[10px] font-mono text-slate-400 dark:text-slate-600 truncate">{hint}</span>
       </div>
       <div className="flex gap-2 min-w-0">
         <div className="relative shrink-0 w-10 h-10">
-          <div className="absolute inset-0 rounded-lg border border-white/10 shadow-inner overflow-hidden">
+          <div className="absolute inset-0 rounded-lg border border-black/10 dark:border-white/10 shadow-inner overflow-hidden">
             <div className="absolute inset-0" style={{ background: value }} />
           </div>
-          <input
-            type="color"
-            value={value}
-            onChange={(e) => onChange(e.target.value)}
-            className="absolute inset-0 w-full h-full opacity-0 cursor-pointer"
-          />
+          <input type="color" value={value} onChange={(e) => onChange(e.target.value)}
+            className="absolute inset-0 w-full h-full opacity-0 cursor-pointer" />
         </div>
         <input
-          type="text"
-          value={value}
-          onChange={(e) => onChange(e.target.value)}
-          className="flex-1 min-w-0 bg-[#0d0d0d] border border-white/[0.08] rounded-lg px-3 py-2 text-sm font-mono text-slate-200 focus:outline-none focus:border-pink-500/60 focus:ring-1 focus:ring-pink-500/20 transition-colors"
+          type="text" value={value} onChange={(e) => onChange(e.target.value)}
+          className="flex-1 min-w-0 bg-white dark:bg-[#0d0d0d] border border-slate-200 dark:border-white/[0.08] rounded-lg px-3 py-2 text-sm font-mono text-slate-800 dark:text-slate-200 focus:outline-none focus:border-pink-500/60 focus:ring-1 focus:ring-pink-500/20 transition-colors"
         />
       </div>
     </div>
@@ -43,24 +35,19 @@ function ColorRow({
 
 // ─── SliderRow ────────────────────────────────────────────────────────────────
 
-function SliderRow({
-  label, value, min, max, unit, start, end, onChange,
-}: {
+function SliderRow({ label, value, min, max, unit, start, end, onChange }: {
   label: string; value: string; min: string; max: string;
   unit: string; start: string; end: string; onChange: (v: string) => void;
 }) {
   return (
     <div className="space-y-2">
       <div className="flex items-center justify-between">
-        <label className="text-xs font-semibold text-slate-300 uppercase tracking-wider">{label}</label>
-        <span className="text-xs font-mono text-pink-400 bg-pink-500/10 px-2 py-0.5 rounded-md">{value}{unit}</span>
+        <label className="text-xs font-semibold text-slate-600 dark:text-slate-300 uppercase tracking-wider">{label}</label>
+        <span className="text-xs font-mono text-pink-500 dark:text-pink-400 bg-pink-50 dark:bg-pink-500/10 px-2 py-0.5 rounded-md">{value}{unit}</span>
       </div>
-      <input
-        type="range" min={min} max={max} value={value}
-        onChange={e => onChange(e.target.value)}
-        className="w-full h-1.5 bg-white/10 rounded-full appearance-none cursor-pointer accent-pink-500"
-      />
-      <div className="flex justify-between text-[10px] text-slate-600">
+      <input type="range" min={min} max={max} value={value} onChange={e => onChange(e.target.value)}
+        className="w-full h-1.5 bg-slate-200 dark:bg-white/10 rounded-full appearance-none cursor-pointer accent-pink-500" />
+      <div className="flex justify-between text-[10px] text-slate-400 dark:text-slate-600">
         <span>{start}</span><span>{end}</span>
       </div>
     </div>
@@ -71,9 +58,9 @@ function SliderRow({
 
 function Section({ title, children }: { title: string; children: React.ReactNode }) {
   return (
-    <section className="rounded-2xl border border-white/[0.07] bg-white/[0.03] overflow-hidden">
-      <div className="px-5 py-3 border-b border-white/[0.06] bg-white/[0.02]">
-        <h3 className="text-[11px] font-bold text-slate-500 uppercase tracking-widest">{title}</h3>
+    <section className="rounded-2xl border border-slate-200 dark:border-white/[0.07] bg-white dark:bg-white/[0.03] overflow-hidden">
+      <div className="px-5 py-3 border-b border-slate-100 dark:border-white/[0.06] bg-slate-50 dark:bg-white/[0.02]">
+        <h3 className="text-[11px] font-bold text-slate-400 dark:text-slate-500 uppercase tracking-widest">{title}</h3>
       </div>
       <div className="p-5 space-y-5">{children}</div>
     </section>
@@ -141,52 +128,49 @@ ${s} .terminal-btn:hover:not(:disabled) { filter: brightness(1.15); }`;
   const isActive = currentStyle === themeName;
 
   return (
-    <div className="@container flex flex-col h-full bg-[#0d0d12] text-slate-300 font-sans">
+    <div className="@container flex flex-col h-full bg-slate-50 dark:bg-[#0d0d12] text-slate-700 dark:text-slate-300 font-sans">
 
       {/* ─ Toolbar ─────────────────────────────────────────── */}
-      <div className="flex flex-col @[500px]:flex-row @[500px]:items-center justify-between gap-2 px-4 py-3 border-b border-white/[0.07] bg-[#111118]">
-
-        {/* Left: title + mode toggle */}
-        <div className="flex items-center gap-3">
-          <div className="p-1.5 rounded-lg bg-gradient-to-br from-pink-500/20 to-purple-500/20 border border-pink-500/20">
-            <Wand2 size={14} className="text-pink-400" />
-          </div>
-          <span className="text-sm font-semibold text-white">Theme Studio</span>
-          <div className="flex bg-white/[0.06] rounded-lg p-0.5 border border-white/[0.07]">
+      <div className="flex flex-col @[500px]:flex-row @[500px]:items-center justify-between gap-2 px-4 py-3 border-b border-slate-200 dark:border-white/[0.07] bg-white dark:bg-[#111118]">
+        <div className="flex items-center gap-2">
+          {/* Mode toggle */}
+          <div className="flex bg-slate-100 dark:bg-white/[0.06] rounded-lg p-0.5 border border-slate-200 dark:border-white/[0.07]">
             {(['basic', 'advanced'] as const).map(m => (
               <button
                 key={m}
                 onClick={() => setViewMode(m)}
                 className={`flex items-center gap-1.5 px-3 py-1 text-xs rounded-md transition-all font-medium
-                  ${viewMode === m ? 'bg-white/10 text-white shadow-sm' : 'text-slate-500 hover:text-slate-300'}`}
+                  ${viewMode === m
+                    ? 'bg-white dark:bg-white/10 text-slate-800 dark:text-white shadow-sm border border-slate-200 dark:border-transparent'
+                    : 'text-slate-400 dark:text-slate-500 hover:text-slate-600 dark:hover:text-slate-300'}`}
               >
                 {m === 'basic' ? <SlidersHorizontal size={11} /> : <FileCode2 size={11} />}
                 {m === 'basic' ? 'Visual' : 'CSS'}
               </button>
             ))}
           </div>
-        </div>
 
-        {/* Right: ID + apply */}
-        <div className="flex items-center gap-2">
-          <div className="flex items-center bg-white/[0.04] border border-white/[0.08] rounded-lg px-3 py-1.5 focus-within:border-pink-500/40 transition-colors">
-            <span className="text-slate-600 text-[10px] font-mono mr-1.5">ID:</span>
+          {/* Theme ID */}
+          <div className="flex items-center bg-slate-50 dark:bg-white/[0.04] border border-slate-200 dark:border-white/[0.08] rounded-lg px-3 py-1.5 focus-within:border-pink-400 dark:focus-within:border-pink-500/40 transition-colors">
+            <span className="text-slate-400 dark:text-slate-600 text-[10px] font-mono mr-1.5">ID:</span>
             <input
               type="text"
               value={themeName}
               onChange={(e) => setThemeName(e.target.value.toLowerCase().replace(/[^a-z0-9-]/g, ''))}
-              className="bg-transparent outline-none text-xs text-pink-300 font-mono w-24 @[500px]:w-32"
+              className="bg-transparent outline-none text-xs text-pink-600 dark:text-pink-300 font-mono w-24 @[500px]:w-32"
               placeholder="my-custom-theme"
             />
           </div>
+
+          {/* Apply button */}
           <button
             onClick={viewMode === 'basic' ? () => handleApply(generateBasicCss()) : handleApplyAdvanced}
             className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold transition-all
               ${appliedFeedback
-                ? 'bg-emerald-500/20 text-emerald-400 border border-emerald-500/30'
+                ? 'bg-emerald-100 dark:bg-emerald-500/20 text-emerald-700 dark:text-emerald-400 border border-emerald-300 dark:border-emerald-500/30'
                 : isActive
-                  ? 'bg-pink-500/10 text-pink-400 border border-pink-500/30'
-                  : 'bg-pink-600 hover:bg-pink-500 text-white border border-pink-700 shadow-lg shadow-pink-900/30'}`}
+                  ? 'bg-pink-50 dark:bg-pink-500/10 text-pink-600 dark:text-pink-400 border border-pink-200 dark:border-pink-500/30'
+                  : 'bg-pink-600 hover:bg-pink-500 text-white border border-pink-700 shadow-md shadow-pink-200 dark:shadow-pink-900/30'}`}
           >
             {appliedFeedback ? <CheckCheck size={13} /> : isActive ? <Save size={13} /> : <Play size={13} />}
             {appliedFeedback ? 'Applied!' : isActive ? 'Update' : 'Apply'}
@@ -200,8 +184,8 @@ ${s} .terminal-btn:hover:not(:disabled) { filter: brightness(1.15); }`;
         {viewMode === 'basic' ? (
           <div className="flex-1 overflow-y-auto p-4 @[500px]:p-6">
             <div className="max-w-2xl mx-auto space-y-4">
-              <p className="text-xs text-slate-600 mb-2">
-                Adjustments apply to theme <code className="text-pink-400 font-mono">{themeName}</code>. Click <strong className="text-slate-300">Apply</strong> to inject.
+              <p className="text-xs text-slate-400 dark:text-slate-600 mb-2">
+                Adjustments apply to theme <code className="text-pink-500 dark:text-pink-400 font-mono">{themeName}</code>. Click <strong className="text-slate-600 dark:text-slate-300">Apply</strong> to inject.
               </p>
 
               <Section title="Title Bar">
@@ -229,23 +213,23 @@ ${s} .terminal-btn:hover:not(:disabled) { filter: brightness(1.15); }`;
         ) : (
           <>
             {/* Advanced banner */}
-            <div className="flex flex-col @[480px]:flex-row @[480px]:items-center gap-2 @[480px]:justify-between px-4 py-2.5 bg-[#0e1420] border-b border-blue-900/40">
-              <p className="text-xs text-slate-500 leading-relaxed">
+            <div className="flex flex-col @[480px]:flex-row @[480px]:items-center gap-2 @[480px]:justify-between px-4 py-2.5 bg-blue-50 dark:bg-[#0e1420] border-b border-blue-200 dark:border-blue-900/40">
+              <p className="text-xs text-slate-500 dark:text-slate-500 leading-relaxed">
                 Scope rules with{' '}
-                <code className="text-pink-300 bg-pink-500/10 px-1 rounded font-mono text-[11px]">
+                <code className="text-pink-600 dark:text-pink-300 bg-pink-50 dark:bg-pink-500/10 px-1 rounded font-mono text-[11px]">
                   {`[data-system-style="${themeName}"]`}
                 </code>
-                . <code className="text-slate-400 text-[11px]">@import</code> and <code className="text-slate-400 text-[11px]">javascript:</code> are stripped on apply.
+                . <code className="text-slate-500 text-[11px]">@import</code> and <code className="text-slate-500 text-[11px]">javascript:</code> are stripped on apply.
               </p>
               <button
                 onClick={loadBoilerplate}
-                className="self-start @[480px]:self-auto flex items-center gap-1.5 text-xs text-blue-400 bg-blue-500/10 hover:bg-blue-500/20 border border-blue-500/20 px-3 py-1.5 rounded-lg transition-colors whitespace-nowrap"
+                className="self-start @[480px]:self-auto flex items-center gap-1.5 text-xs text-blue-600 dark:text-blue-400 bg-blue-100 dark:bg-blue-500/10 hover:bg-blue-200 dark:hover:bg-blue-500/20 border border-blue-200 dark:border-blue-500/20 px-3 py-1.5 rounded-lg transition-colors whitespace-nowrap"
               >
                 <BookOpen size={12} /> Load Template
               </button>
             </div>
 
-            {/* Editor */}
+            {/* Editor — stays dark by design (code editors are always dark) */}
             <div className="flex-1 relative">
               <textarea
                 value={draftCss}
