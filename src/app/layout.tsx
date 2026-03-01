@@ -1,6 +1,7 @@
 import { Inter } from "next/font/google";
 import "./globals.css";
 import { WindowSystemProvider } from "@maomaolabs/core";
+import { StyleProvider } from "@/components/StyleProvider";
 import "@maomaolabs/core/style.css";
 import { OSWalkthrough } from "@/components/OSWalkthrough";
 import favicon from "./favicon.png";
@@ -23,11 +24,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <WindowSystemProvider>
+        <StyleProvider>
           <OSWalkthrough>
             {children}
           </OSWalkthrough>
-        </WindowSystemProvider>
+        </StyleProvider>
       </body>
     </html>
   );
